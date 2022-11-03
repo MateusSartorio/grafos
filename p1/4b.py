@@ -50,14 +50,23 @@ def aluno_dedicado(A, B):
     
     # Gera uma lista ordenada contendo uma lista com todas as disciplinas do primeiro semestre na primeiro posicao, todas do segundo da segunda posicao e assim por diante
     lista_ordenada = []
+
+    # Inicialmente, calcula-se a quantidade de semestres que devera ser cursada pelo aluno dedicado
+    maior_semestre = 0
+    for i in G.vertices(sort=False):
+        if G.get_vertex(i) > maior_semestre:
+            maior_semestre = G.get_vertex(i)
+
+    # Para cada semestre, adiciona uma nova lista dentro da lista global (lista_ordenada)
+    for i in range(maior_semestre + 1):
+        lista_ordenada.append([])
+
+    # Coloca-se cada disciplina dentro de sua posicao correta dentro de lista_ordenada
     for i in G.vertices(sort=False):
         semestre = G.get_vertex(i)
-        if semestre + 1 > len(lista_ordenada):
-            lista_ordenada.append([i])
-        else:
-            lista_ordenada[semestre].append(i)
+        lista_ordenada[semestre].append(i)
 
-    # Imprime a lista para a saida padrao
+    #Imprime a lista para a saida padrao
     print("Aluno dedicado: ")
     for idx, x in enumerate(lista_ordenada):
         print(f"Semestre {idx + 1}: ", x)
