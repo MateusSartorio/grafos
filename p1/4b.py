@@ -66,7 +66,7 @@ def aluno_dedicado(A, B):
         semestre = G.get_vertex(i)
         lista_ordenada[semestre].append(i)
 
-    #Imprime a lista para a saida padrao
+    # Imprime a lista para a saida padrao
     print("Aluno dedicado: ")
     for idx, x in enumerate(lista_ordenada):
         print(f"Semestre {idx + 1}: ", x)
